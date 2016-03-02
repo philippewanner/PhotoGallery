@@ -27,13 +27,10 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         // Dispose of any resources that can be recreated.
     }
     
-    func collectionView(collectionView: UICollectionView, didDeselectItemAtIndexPath indexPath: NSIndexPath) {
-        //When someone clicks on the cell
-        self.performSegueWithIdentifier("showImage", sender: self)
-    }
-    
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if segue.identifier == "showImage"{
+
+        if segue.identifier == "showImage" {
+            NSLog("showImage")
             //Get the number of items selected in the collection view
             let indexPaths = self.collectionView!.indexPathsForSelectedItems()!
             //Get the first items of those
@@ -44,15 +41,23 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
             
             //Set the image in the ImageViewController to the selected item in the collection view
             controller.image = self.images[indexPath.row]!
+            
             //Set the title of this image depending of the selected item in the collection view
             controller.title = self.titles[indexPath.row]
         }
+    }
+    
+    func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
+        //When someone clicks on the cell
+        NSLog("click on image")
+        self.performSegueWithIdentifier("showImage", sender: self)
     }
     
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier("cell", forIndexPath: indexPath) as! CollectionViewCell
         
+        NSLog("load image&title number %i in a cell", indexPath.row)
         cell.imageView?.image = self.images[indexPath.row]
         
         cell.titleLabel?.text = self.titles[indexPath.row]
@@ -61,7 +66,9 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     }
     
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return self.titles.count //For the number of cells in our collection
+        
+        //For the number of cells in our collection
+        return self.titles.count
     }
 
 

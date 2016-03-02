@@ -82,7 +82,7 @@
                     <navigationItem key="navigationItem" title="Gallery" id="I1v-r0-diL"/>
                     <connections>
                         <outlet property="collectionView" destination="G4Q-q9-Ser" id="j2O-uy-Cm1"/>
-                        <segue destination="KD3-xh-Y0P" kind="show" identifier="showImage" id="73v-lM-Hqt"/>
+                        <segue destination="KD3-xh-Y0P" kind="show" identifier="showImage" id="t8b-r5-odd"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

@@ -15,6 +15,7 @@ class ImageViewController: UIViewController {
     var image = UIImage()
     
     override func viewDidLoad() {
+        
         super.viewDidLoad()
 
         self.imageView.image = self.image
